@@ -28,6 +28,7 @@
   "dependencies": {
     "expect": "^1.16.0",
     "react": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react-dom": "^0.14.8",
+    "redux": "^3.3.1"
   }
 }
