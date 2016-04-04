@@ -4,9 +4,9 @@
   "description": "Minimal Todo app based on the egghead redux course https://egghead.io/series/getting-started-with-redux",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server",
-    "lint": "./node_modules/.bin/eslint ./app",
-    "build": "./node_modules/.bin/webpack"
+    "dev": "webpack-dev-server",
+    "lint": "eslint ./app",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
