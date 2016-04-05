@@ -1,32 +1,35 @@
 import ReactDOM from 'react-dom';
+import expect from 'expect';
+import expectImmutable from 'expect-immutable';
 import React from 'react';
-import { createStore } from 'redux';
+import Immutable from 'immutable';
 
-import Counter from './components/Counter.js';
+expect.extend(expectImmutable);
 
-const counter = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
+const toggleTodo = (todo) => Immutable.Map(todo)
+  .set('completed', !todo.completed)
+  .toJS();
+
+const testToggleTodo = () => {
+  const todoBefore = {
+    id: 0,
+    text: 'Learn Redux',
+    completed: false,
+  };
+
+  const todoAfter = {
+    ...todoBefore,
+    completed: true,
+  };
+
+  expect(toggleTodo(todoBefore)).toEqual(todoAfter);
 };
 
-const store = createStore(counter);
-
 const render = () => {
-  ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-      onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-    />,
+  ReactDOM.render(<h1>Hello</h1>,
     document.getElementById('app')
   );
 };
 
+testToggleTodo();
 render();
-store.subscribe(render);
